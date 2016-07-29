@@ -1,14 +1,20 @@
 import codecs
 from os import listdir
-files = listdir(".") # listing of the current directory
-logfilesnames = filter(lambda x: x.endswith('.log'), files) # select *.log files
-for n in logfilesnames:    # by filename cycle
-    f = codecs.open(n,'r+','utf_8_sig').readlines() #[n cycle] reading lines from each file
-    for i in [15,16]: # line numbers cycle
-        f[i]='--deleted--\n' # [cycle] edit 16 and 17 lines in the file
+files = listdir(".") # листинг текущей директории
+LogFilesNames = filter(lambda x: x.endswith('.log'), files) # отобрать все лог файлы
+print('Number of files:',len(LogFilesNames))
+for n in LogFilesNames:    # цикл по именам фалов
+    f = codecs.open(n,'r+','utf_8_sig').readlines() # читаем строки каждого файла
+    for i in [15,16]: # цикл по номерам строк
+        f[i]='-- pte_deleted@serebrennikovn --\n' # правим 16 и 17 строки в файле
     with codecs.open(n,'w','utf_8_sig') as F:
-        F.writelines(f) # [cycle] inscribing changes into the file 
-        print('Been edited file: ',F.name) # [cycle] Displays the name of the edited file
+        F.writelines(f) # применение изменений в файле
+        print('Applying in file: ',F.name) # вывод количества обработанных файлов
+
+
+
+
+
 
 
 
