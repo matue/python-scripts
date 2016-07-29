@@ -9,7 +9,7 @@ for n in LogFilesNames:    # цикл по именам фалов
         f[i]='-- pte_deleted@serebrennikovn --\n' # правим 16 и 17 строки в файле
     with codecs.open(n,'w','utf_8_sig') as F:
         F.writelines(f) # применение изменений в файле
-        print('Applying in file: ',F.name) # вывод количества обработанных файлов
+        print('Applying in file: ',F.name) # вывод имени обработанного файла
 
 
 
