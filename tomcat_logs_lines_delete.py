@@ -8,13 +8,13 @@ for n in LogFilesNames:    # цикл по именам файлов
     print('File: ',n,'Lines: ',len(f)) 
     for i in range(len(f)): # цикл по номерам строк
         if 'pte_deleted' in f[i]:
-            lc=lc+0
+            pass
         elif 'c.s.s.c.jdbc.query.ScriptQuery - pan'  in f[i]:# условие сравнения 
             f[i]='-- c.s.s.c.jdbc.query.ScriptQuery - pan: pte_deleted@serebrennikovn --\n' # правка строк в файле
-            lc=lc+1
+            lc+=1
         elif 'c.s.s.c.jdbc.query.ScriptQuery - contractNumber'  in f[i]: 
             f[i]='-- c.s.s.c.jdbc.query.ScriptQuery - contractNumber: pte_deleted@serebrennikovn --\n'
-            lc=lc+1
+            lc+=1
     with open(n,'w') as F:
         F.writelines(f) # применение изменений в файле
         print('Edited lines: ',lc) # вывод числа отредактированных строк
