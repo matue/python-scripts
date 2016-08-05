@@ -1,4 +1,4 @@
-import codecs
+import codecs #импорт библиотеки
 from os import listdir
 files = listdir(".") # листинг текущей директории
 LogFilesNames = filter(lambda x: x.endswith('.log'), files) # отобрать все лог файлы
