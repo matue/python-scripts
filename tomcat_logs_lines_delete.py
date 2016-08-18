@@ -8,7 +8,7 @@ for n in LogFilesNames:    # цикл по именам файлов
     print'File: ',n,'\nLines: ',len(f)
     for i in range(len(f)): # цикл по номерам строк
         if 'pte_deleted' in f[i]:
-            lc+=0 # счетчик 
+            pass
         elif 'c.s.s.c.jdbc.query.ScriptQuery - pan'  in f[i]:# условие сравнения 
             f[i]='-- c.s.s.c.jdbc.query.ScriptQuery - pan: pte_deleted@serebrennikovn --\n' # правка строк в файле
             lc+=1
