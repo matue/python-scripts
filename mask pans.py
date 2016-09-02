@@ -23,7 +23,7 @@ mask=r' \1 **** **** \2 '
 for n in log_files_names:    # цикл по именам файлов
     f = open(n,'r') 
     f_text=f.read()  # инициируем переменную f_text и помещаем в нее текстовое содержимое файла
-    f_new_text = re.sub(Pattern, Mask, f_text) # в f_new_text пишем обработанный с помощью регулярного выражения текст
+    f_new_text = re.sub(pattern, mask, f_text) # в f_new_text пишем обработанный с помощью регулярного выражения текст
     with open(n, 'w') as f: 
         print'Applying in file: ',n # вывод имени обработанного файла
         f.write(f_new_text) 
