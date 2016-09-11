@@ -9,21 +9,20 @@
 
 import os
 import re
-def get_logs(x):
-    m=[]
-    for i in x:
+
+
+def get_logs():  # функция, возвращающая список лог файлов
+    files = os.listdir(".")  # листинг текущей директории
+    m = []
+    for i in files:
         if i.endswith('.log'):
             m.append(i)
     return m
-files = os.listdir(".") # листинг текущей директории
-log_files_names=get_logs(files) # отобрать все лог файлы
-print'Files:',len(log_files_names)
-pattern=r'\D(\d{4})\d{8}(\d{4})\D' 
-mask=r' \1 **** **** \2 ' 
-for n in log_files_names:    # цикл по именам файлов
-    f = open(n,'r') 
-    f_text=f.read()  # инициируем переменную f_text и помещаем в нее текстовое содержимое файла
-    f_new_text = re.sub(pattern, mask, f_text) # в f_new_text пишем обработанный с помощью регулярного выражения текст
-    with open(n, 'w') as f: 
-        print'Applying in file: ',n # вывод имени обработанного файла
-        f.write(f_new_text) 
+pattern = r'\D(\d{4})\d{8}(\d{4})\D'
+mask = r' \1 **** **** \2 '
+for n in get_logs():  # цикл по именам файлов
+    f = open(n, 'r')
+    f_text = f.read()  # инициируем переменную f_text и помещаем в нее текстовое содержимое файла
+    f_new_text = re.sub(pattern, mask, f_text)  # в f_new_text пишем обработанный текст
+    with open(n, 'w') as f:
+        f.write(f_new_text)
